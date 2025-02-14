@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>For My Love Bansi ❤️</title>
+    <style>
+        /* Background Image with Pink Overlay */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: url('https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193042/ctm63on1vd0vtvic9rgg.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.6); /* Pink Transparent Layer */
+        }
+        .container {
+            display: none;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            font-size: 2.8em;
+            color: #ff007f;
+            text-shadow: 0 0 15px #ff69b4;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff69b4; }
+            to { text-shadow: 0 0 20px #ff1493; }
+        }
+        .message {
+            font-size: 1.4em;
+            color: #fff;
+            margin-top: 20px;
+            padding: 0 15px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
+            animation: float 4s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-600px); opacity: 0; }
+        }
+
+        /* Interactive Heart-Shaped Image Arrangement */
+        .conveyor-belt {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .image-gallery {
+            display: flex;
+            gap: 20px;
+            animation: moveImages 20s linear infinite;
+        }
+        @keyframes moveImages {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .heart-frame {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            min-width: 150px;
+            min-height: 150px;
+            background: pink;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        .heart-frame img {
+            width: 90%;
+            height: 90%;
+            min-width: 90%;
+            min-height: 90%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff69b4;
+        }
+
+        /* Music Control Button */
+        .music-control {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 0, 127, 0.8);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+        }
+        .music-control:hover {
+            background: rgba(255, 0, 127, 1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .message { font-size: 1em; }
+            .heart-frame {
+                width: 120px;
+                height: 120px;
+                min-width: 120px;
+                min-height: 120px;
+            }
+            .heart-frame img {
+                width: 95%;
+                height: 95%;
+                min-width: 95%;
+                min-height: 95%;
+            }
+            .music-control {
+                font-size: 0.7em;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+    <script>
+        function unlockPage() {
+            let pass = prompt("Enter the secret password to see Jaimin's love for you, Bansi 💖:");
+            if (pass === "foreverlove") {
+                document.getElementById("content").style.display = "block";
+                document.getElementById("lock").style.display = "none";
+                generateHearts();
+            } else {
+                alert("Oops! Wrong password, try again!");
+            }
+        }
+
+        function generateHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }, 300);
+        }
+
+        function toggleMusic() {
+            let audio = document.getElementById("bg-music");
+            let musicBtn = document.querySelector(".music-control");
+            
+            if (audio.paused) {
+                audio.play().then(() => {
+                    musicBtn.textContent = "🎵 Pause";
+                }).catch((error) => {
+                    console.log("Playback failed:", error);
+                    alert("Please try clicking again to play music!");
+                });
+            } else {
+                audio.pause();
+                musicBtn.textContent = "🎵 Play";
+            }
+        }
+    </script>
+</head>
+<body onload="unlockPage()">
+    <audio id="bg-music" loop>
+        <source src="https://res.cloudinary.com/dfj4u4btd/video/upload/v1739190371/mqll1d9c08tng25rp8j3.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div class="background-container">
+        <div class="overlay"></div>
+    </div>
+
+    <div id="lock">
+        <h1>🔒 This page is locked 🔒</h1>
+        <p>Please enter the password to unlock this special surprise! 💖</p>
+    </div>
+
+    <div id="content" class="container">
+        <h1>Happy Valentine's Day, My Love Bansi! ❤️</h1>
+        <p class="message">You are my world, my love, my forever. 🌎💖</p>
+        <p class="message">You are my <b>jaan, my queen, my sweetheart</b>! Every moment with you is magical! 💕</p>
+        <p class="message">You are my <b>baku, my little princess</b>—my world revolves around you! 😘</p>
+        <p class="message">I love you endlessly, <b>Chopali, Vaydi, Janeman</b>! Forever yours, Jaimin ❤️</p>
+        <p class="message">Through every smile, every tear, every moment, I promise to stand by your side, loving you more each day, my love 🌎💖</p>
+        <p class="message">Our love story is my favorite, and I can't wait to spend my lifetime creating beautiful chapters with you. 📖💞</p>
+        <p class="message">Bansi, you are not just my love, you are my forever, my destiny, my reason to believe in true love. 💍💖</p>
+
+        <div class="image-gallery">
+            <div class="heart-frame heart1">
+                <img src="https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193042/wgj6ueu9hvpqesdrbpls.jpg" alt="Bansi & Jaimin">
+                <button class="music-control" onclick="toggleMusic()">🎵 Play</button>
+            </div>
+            <div class="heart-frame heart2">
+                <img src="https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193042/ctm63on1vd0vtvic9rgg.jpg" alt="Beautiful Moments">
+            </div>
+            <div class="heart-frame heart3">
+                <img src="https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193043/gt1h7zuwjcvf1gojpeij.jpg" alt="Forever Love">
+            </div>
+            <div class="heart-frame heart4">
+                <img src="https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193048/uzmjycikb5hdbgqv0vb4.jpg" alt="Sweet Memories">
+            </div>
+            <div class="heart-frame heart5">
+                <img src="https://res.cloudinary.com/dfj4u4btd/image/upload/v1739193043/gt1h7zuwjcvf1gojpeij.jpg" alt="Magical Love">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
